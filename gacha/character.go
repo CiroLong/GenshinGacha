@@ -1,7 +1,6 @@
 package gacha
 
 type Character struct {
-	ID      uint   `json:"id"`
 	Name    string `json:"name"`
 	Star    int    `json:"star"`
 	ImgPath string `json:"ImgPath"`

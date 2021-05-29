@@ -46,7 +46,7 @@ func (c *User) Gacha_once() Character {
 		rand.Seed(time.Now().UnixNano())
 		rand_number := rand.Intn(len(c.Content.Star_5))
 		result := c.Content.Star_5[rand_number]
-		if result.ID != c.Special[0].ID { //是否为up
+		if result.Name != c.Special[0].Name { //是否为u
 			c.EorA = true //不为up则下次必出
 		}
 		c.Big_pool = 1
@@ -71,7 +71,7 @@ func (c *User) Gacha_once() Character {
 	if rand_number <= rate_5star { //出5星
 		rand1 := rand.Intn(len(c.Content.Star_5))
 		result = c.Content.Star_5[rand1]
-		if result.ID != c.Special[0].ID { //是否为up
+		if result.Name != c.Special[0].Name { //是为up
 			c.EorA = true //不为up则下次必出
 		}
 		c.Big_pool = 1
