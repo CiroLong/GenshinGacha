@@ -118,7 +118,7 @@ func gachaOnceRes(c *gin.Context) {
 		return
 	}
 
-	db, err := gorm.Open("mysql", "root:071212@(127.0.0.1:3306)/genshin_impact?charset=utf8mb4&parseTime=true&loc=Local")
+	db, err := gorm.Open("mysql", "root:xxxxxx@(127.0.0.1:3306)/genshin_impact?charset=utf8mb4&parseTime=true&loc=Local")
 	if err != nil {
 		panic(err)
 	}
@@ -164,7 +164,7 @@ func gachaTenRes(c *gin.Context) {
 		return
 	}
 
-	db, err := gorm.Open("mysql", "root:071212@(127.0.0.1:3306)/genshin_impact?charset=utf8mb4&parseTime=true&loc=Local")
+	db, err := gorm.Open("mysql", "root:xxxxxx@(127.0.0.1:3306)/genshin_impact?charset=utf8mb4&parseTime=true&loc=Local")
 	if err != nil {
 		panic(err)
 	}
