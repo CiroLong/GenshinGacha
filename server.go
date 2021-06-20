@@ -1,6 +1,7 @@
 package main
 
 import (
+	"Genshin/Cors"
 	"Genshin/gacha"
 
 	"github.com/gin-gonic/gin"
@@ -10,11 +11,16 @@ import (
 
 func main() {
 	r := gin.Default()
+	r.Use(Cors.CORS(Cors.Options{Origin: "*"}))
+
+	r.StaticFile("/", "./mainpage/client.html")
 
 	r.GET("/gacha", gachaOnceRes)
 	r.GET("/gachaten", gachaTenRes)
 
-	r.StaticFile("/test", "./source/test.html")
+	r.StaticFile("/img/page/mainPage.jpg", "./img/page/mainPage.jpg")
+	r.StaticFile("/img/button/button1.png", "./img/button/button1.png")
+	r.StaticFile("/img/button/button2.png", "./img/button/button2.png")
 
 	{
 		r.StaticFile("/favicon.ico", "./img/5star/character/优菈.jpg")

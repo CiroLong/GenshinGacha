@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简易抽卡</title>
+    <style type="text/css">
+        #request {
+            width: 100%;
+            height: 100%;
+            border: solid 1px #90b
+        }
+    </style>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            //!获取button元素
+            const result = document.getElementById("request");
+            const body = document.getElementById("back");
+            const btn1 = document.getElementById("button1");
+            btn1.onclick = function() {
+                //1.创建对象
+                const xhr = new XMLHttpRequest();
+                //2.初始化
+                xhr.open("GET", "http://127.0.0.1:8000/gacha?user_name=CAW", true);
+                //3.发送
+                xhr.send();
+                //4.事件绑定，处理服务端返回的结果
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status >= 200 && xhr.status < 300) {
+                            let data = JSON.parse(xhr.response);
+                            //let src = data;
+                            let name = data.result.name;
+                            let src = data.result.ImgPath;
+                            result.innerHTML = "<img id='pic'  width=\"20%\" height=\"20%\" src=\"" + src + "\"/>" +
+                                "<h1>" + name + "</h1>";
+                        } else {
+
+                        }
+                    }
+                }
+            }
+            const btn2 = document.getElementById("button2");
+            btn2.onclick = function() {
+                //1.创建对象
+                const xhr = new XMLHttpRequest();
+                //2.初始化
+                xhr.open("GET", "http://127.0.0.1:8000/gachaten?user_name=CAW", true);
+                //3.发送
+                xhr.send();
+                //4.事件绑定，处理服务端返回的结果
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status >= 200 && xhr.status < 300) {
+                            let data = JSON.parse(xhr.response);
+                            let src = data.result;
+                            result.innerHTML = "<img id='pic'  width=\"20%\" height=\"20%\" src=\"" + src[0].ImgPath + "\"/>" +
+                                "<button>" + src[0].name + "</button>" +
+                                "<img id='pic'  width=\"20%\" height=\"20%\" src=\"" + src[1].ImgPath + "\"/>" +
+                                "<button>" + src[1].name + "</button>" +
+                                "<img id='pic'  width=\"20%\" height=\"20%\" src=\"" + src[2].ImgPath + "\"/>" +
+                                "<button>" + src[2].name + "</button>" +
+                                "<img id='pic'  width=\"20%\" height=\"20%\" src=\"" + src[3].ImgPath + "\"/>" +
+                                "<button>" + src[3].name + "</button>" +
+                                "<img id='pic'  width=\"20%\" height=\"20%\" src=\"" + src[4].ImgPath + "\"/>" +
+                                "<button>" + src[4].name + "</button>" +
+                                "<img id='pic'  width=\"20%\" height=\"20%\" src=\"" + src[5].ImgPath + "\"/>" +
+                                "<button>" + src[5].name + "</button>" +
+                                "<img id='pic'  width=\"20%\" height=\"20%\" src=\"" + src[6].ImgPath + "\"/>" +
+                                "<button>" + src[6].name + "</button>" +
+                                "<img id='pic'  width=\"20%\" height=\"20%\" src=\"" + src[7].ImgPath + "\"/>" +
+                                "<button>" + src[7].name + "</button>" +
+                                "<img id='pic'  width=\"20%\" height=\"20%\" src=\"" + src[8].ImgPath + "\"/>" +
+                                "<button>" + src[8].name + "</button>" +
+                                "<img id='pic'  width=\"20%\" height=\"20%\" src=\"" + src[9].ImgPath + "\"/>" +
+                                "<button>" + src[9].name + "</button>";
+                        } else {
+
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<div id="request" align="center" style="border: none;">
+    <style>
+        body {
+            background: url("../img/page/mainPage.jpg") no-repeat center center;
+            /*加载背景图*/
+            /* 背景图不平铺 */
+            background-size: 100% 100%;
+            /* 让背景图基于容器大小伸缩 */
+            background-attachment: fixed;
+            border: "none";
+            /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */
+            background-color: #CCCC/*程中会显示背景色 */
+        }
+    </style>
+
+    <body id="back" style="border: none;">
+        <style>
+            #button1 {
+                background: url("../img/button/button1.png") no-repeat;
+                background-size: 100% 100%;
+                background-image: fixed;
+                Float: left;
+                width: 350px;
+                height: 90px;
+                margin: 825px 1033px;
+                border-radius: 50px;
+            }
+            
+            #button2 {
+                background: url("../img/button/button2.png") no-repeat;
+                background-size: 100% 100%;
+                width: 350px;
+                Float: left;
+                height: 90px;
+                border-radius: 50px;
+                background-image: fixed;
+                margin: 825px -1002px;
+            }
+        </style>
+        <p>
+            <button id="button1">
+            </button><button id="button2">
+            </button>
+        </p>
+    </body>
+
+</div>
+
+</html>
