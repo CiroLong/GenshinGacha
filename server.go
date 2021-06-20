@@ -99,7 +99,7 @@ func main() {
 		r.StaticFile("/img/4star29", "./img/4star/雷泽.jpg")
 		r.StaticFile("/img/4star30", "./img/4star/香菱.jpg")
 	} //4star
-	r.Run()
+	r.Run(":8000")
 }
 
 func gachaOnceRes(c *gin.Context) {
